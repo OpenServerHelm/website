@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f9fc">
+  <meta name="description" content="OpenServerHelm is an open-source infrastructure management platform in active development, built for home servers and professional fleets.">
+  <title>OpenServerHelm — Infrastructure, in focus</title>
+  <style>
+    :root{color-scheme:light dark;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--bg:#f7f9fc;--panel:#fff;--panel2:#edf4fc;--text:#14273e;--muted:#526579;--line:#d3e0ee;--blue:#1264bd;--blue2:#0057a8;--halo:#c9e8ff;--chip:#e4f2ff;--hero:#daeafd}
+    [data-theme=dark]{color-scheme:dark;--bg:#0a1628;--panel:#12253a;--panel2:#162e47;--text:#eaf3fd;--muted:#b7cbdf;--line:#34506a;--blue:#8ecbff;--blue2:#7bbbfa;--halo:#143657;--chip:#183e60;--hero:#0d3050}
+    @media(prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--bg:#0a1628;--panel:#12253a;--panel2:#162e47;--text:#eaf3fd;--muted:#b7cbdf;--line:#34506a;--blue:#8ecbff;--blue2:#7bbbfa;--halo:#143657;--chip:#183e60;--hero:#0d3050}}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--blue2)}a:hover{text-decoration-thickness:2px}a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+    .skip{position:absolute;left:-100vw;top:0;padding:.7rem;background:var(--panel);z-index:10}.skip:focus{left:1rem}
+    .wrap{width:min(1120px,calc(100% - 2.5rem));margin:auto}.site-header{border-bottom:1px solid var(--line);position:relative;background:var(--panel)}
+    .bar{min-height:76px;display:flex;align-items:center;gap:1.4rem;justify-content:space-between}
+    .brand{display:inline-flex;align-items:center;gap:.8rem;color:var(--text);text-decoration:none;font-size:1.14rem;font-weight:800;letter-spacing:-.035em;white-space:nowrap}
+    .mark{height:38px;width:38px;border-radius:12px;background:var(--chip);display:grid;place-items:center;color:var(--blue)}
+    nav{display:flex;align-items:center;gap:1.6rem}nav a{font-size:.93rem;font-weight:650;color:var(--muted);text-decoration:none}
+    nav a:hover{color:var(--text)}.actions{display:flex;align-items:center;gap:.7rem}
+    button{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--text);padding:.55rem .8rem}
+    .menu{display:none}.status{font-weight:750;font-size:.82rem;color:var(--blue);background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:.3rem .8rem;display:inline-flex;align-items:center;gap:.5rem}
+    .dot{width:7px;height:7px;border-radius:50%;background:#56a0dc}
+    .hero{background:radial-gradient(ellipse at 85% 12%,var(--hero),transparent 57%);padding:6rem 0 5.5rem}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center}h1,h2,h3{line-height:1.14;letter-spacing:-.04em}h1{font-size:clamp(2.7rem,5vw,4.45rem);margin:1.1rem 0 1.25rem}h2{font-size:clamp(1.8rem,3.5vw,2.5rem);margin:0 0 1rem}h3{font-size:1.18rem;margin:0 0 .5rem}
+    .lead{font-size:clamp(1.09rem,2vw,1.23rem);max-width:580px;color:var(--muted)}
+    .buttons{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.7rem}.btn{display:inline-flex;min-height:45px;align-items:center;padding:.65rem 1.1rem;border-radius:11px;text-decoration:none;font-weight:750;border:1px solid var(--line);background:var(--panel);color:var(--text)}
+    .btn.primary{background:#1264bd;color:#fff;border-color:#1264bd}.btn:hover{transform:translateY(-1px)}.fine{font-size:.87rem;color:var(--muted)}
+    .window{padding:1.1rem;border:1px solid var(--line);border-radius:18px;background:var(--panel);box-shadow:0 18px 45px #0a264a19;transform:rotate(-1deg)}
+    .window-head{display:flex;align-items:center;gap:.4rem;border-bottom:1px solid var(--line);padding:0 0 .85rem;font-size:.76rem;color:var(--muted)}
+    .window-head i{height:8px;width:8px;background:var(--line);border-radius:50%}.window-head span{margin-left:auto}
+    .window-title{font-size:.87rem;font-weight:800;margin:1.3rem 0 .85rem}.tilegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem}.tile{border:1px solid var(--line);background:var(--panel2);border-radius:12px;padding:1rem}.tile small{display:block;color:var(--muted)}.tile strong{font-size:1.55rem}
+    .lines{height:80px;display:flex;align-items:flex-end;gap:7px;margin-top:.9rem;border-top:1px solid var(--line);padding-top:12px}.lines b{flex:1;background:#4d9ce2;border-radius:4px 4px 0 0;opacity:.8}
+    section{padding:4.4rem 0}section+section{border-top:1px solid var(--line)}.intro{max-width:760px;color:var(--muted);margin:0 0 2rem}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.card{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:1.6rem}.card p{margin:0;color:var(--muted)}.symbol{color:var(--blue);font-weight:900;font-size:1.35rem}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}.steps{padding:0;list-style:none;counter-reset:step}.steps li{counter-increment:step;margin:0 0 1.2rem;padding-left:2.8rem;position:relative}.steps li:before{content:counter(step);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--chip);color:var(--blue);font-weight:800}
+    .note{border-left:4px solid var(--blue);padding:1.1rem 1.3rem;background:var(--panel2);border-radius:0 12px 12px 0}
+    footer{border-top:1px solid var(--line);padding:2.3rem 0;font-size:.88rem;color:var(--muted)}.foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    @media(max-width:800px){.hero{padding:4rem 0 3.3rem}.hero-grid,.split{grid-template-columns:1fr}.window{transform:none}.cards{grid-template-columns:repeat(2,1fr)}nav{display:none;position:absolute;top:76px;left:0;right:0;padding:1rem 1.4rem;background:var(--panel);border-bottom:1px solid var(--line);z-index:3;flex-direction:column;align-items:stretch}nav[data-open=true]{display:flex}.menu{display:block}}
+    @media(max-width:520px){.wrap{width:min(100% - 1.5rem,1120px)}.brand{font-size:1rem}.bar{gap:.4rem}.cards{grid-template-columns:1fr}.btn{width:100%;justify-content:center}.window{margin-top:1rem}section{padding:3.3rem 0}.hero{padding-top:3rem}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="OpenServerHelm home">
+      <span class="mark" aria-hidden="true">
+        <svg width="27" height="27" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="5" stroke="currentColor" stroke-width="2"/><path d="M16 1v9M16 22v9M1 16h9M22 16h9" stroke="currentColor" stroke-width="2"/></svg>
+      </span>
+      OpenServerHelm
+    </a>
+    <nav id="navigation" aria-label="Primary navigation">
+      <a href="#product">Product</a><a href="#principles">Security</a><a href="#roadmap">Roadmap</a><a href="#community">Community</a>
+    </nav>
+    <div class="actions">
+      <button id="theme" type="button" aria-label="Appearance: follow system" title="Change appearance">◐ <span id="theme-label">System</span></button>
+      <button class="menu" id="menu" type="button" aria-controls="navigation" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div id="top" class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="status"><span class="dot"></span> Open source · In development</span>
+        <h1>Your infrastructure.<br>In focus.</h1>
+        <p class="lead">Meet <strong>OpenServerHelm</strong>: a self-hosted infrastructure management platform in development for home servers and professional fleets.</p>
+        <p class="lead">Understand your systems, make informed decisions and keep people in control of sensitive operations.</p>
+        <div class="buttons"><a class="btn primary" href="#roadmap">Explore the roadmap →</a><a class="btn" href="#product">See the vision</a></div>
+        <p class="fine">Early development project. No stable release or supported installer is available yet.</p>
+      </div>
+      <div class="window" role="img" aria-label="Illustrative, entirely fictional dashboard concept with server metrics; not a live screenshot">
+        <div class="window-head"><i></i><i></i><i></i><span>CONCEPT PREVIEW · SYNTHETIC DATA</span></div>
+        <div class="window-title">Systems overview <span style="float:right;color:var(--muted);font-weight:400">Illustration only</span></div>
+        <div class="tilegrid"><div class="tile"><small>Example servers</small><strong>04</strong></div><div class="tile"><small>Example healthy apps</small><strong>18</strong></div></div>
+        <div class="window-title">Activity — example</div>
+        <div class="lines" aria-hidden="true"><b style="height:29%"></b><b style="height:46%"></b><b style="height:38%"></b><b style="height:57%"></b><b style="height:70%"></b><b style="height:47%"></b><b style="height:35%"></b><b style="height:53%"></b><b style="height:42%"></b><b style="height:62%"></b><b style="height:46%"></b></div>
+        <p class="fine">No connection to actual infrastructure. Example data only.</p>
+      </div>
+    </div>
+  </div>
+  <section id="product"><div class="wrap">
+    <h2>One place to understand your systems.</h2>
+    <p class="intro">OpenServerHelm is being designed to bring monitoring, troubleshooting, applications and controlled maintenance into a coherent experience. The capabilities below are goals, not a claim of a supported public release.</p>
+    <div class="cards">
+      <article class="card"><span class="symbol" aria-hidden="true">◎</span><h3>Infrastructure visibility</h3><p>A consolidated perspective on server, service and resource health, backed by evidence.</p></article>
+      <article class="card"><span class="symbol" aria-hidden="true">✧</span><h3>Guided assistance</h3><p>Conversational diagnosis that helps explain problems without treating the AI as an administrator.</p></article>
+      <article class="card"><span class="symbol" aria-hidden="true">◇</span><h3>Careful operations</h3><p>Scoped actions, authorization checks, approvals and recovery planning for infrastructure changes.</p></article>
+    </div>
+  </div></section>
+  <section id="principles"><div class="wrap split">
+    <div><h2>Designed around control and trust.</h2><p class="intro">The long-term architecture puts the infrastructure owner in charge. A conversational request is never proof that someone has permission to access or change a server.</p></div>
+    <div class="note"><strong>Security is a product requirement, not a marketing guarantee.</strong><p>Owner consent, backend-enforced permissions and model-independent policy are part of the design. Their production effectiveness must be verified before a stable release.</p></div>
+  </div></section>
+  <section id="roadmap"><div class="wrap split">
+    <div><h2>Built in the open, released when ready.</h2><p class="intro">Development is progressing through a staged roadmap. The public source and complete documentation will be published after a security, privacy and licensing review.</p></div>
+    <div><ol class="steps"><li><strong>Foundation</strong><div class="fine">Responsive interface, secure identity and durable application data.</div></li><li><strong>Infrastructure integrations</strong><div class="fine">Evidence-backed monitoring, incident workflows and controlled operations.</div></li><li><strong>Release qualification</strong><div class="fine">Verified installers, recovery procedures, documented compatibility and publication.</div></li></ol><p class="fine">Progress and release dates are not guaranteed. Download links will appear only for real published artifacts.</p></div>
+  </div></section>
+  <section id="community"><div class="wrap">
+    <h2>A project for home users and professionals.</h2>
+    <p class="intro">OpenServerHelm aims to be approachable enough for a first self-hosted server and capable enough for larger managed environments. Contributor guides, documentation and community support will appear as the public project opens.</p>
+    <div class="note"><strong>Want to follow along?</strong><p>Our official GitHub source and release pages will be linked here when the publication review is complete. For now, this website is a project introduction, not a live control-plane login.</p></div>
+  </div></section>
+</main>
+<footer><div class="wrap foot"><div>© <span id="year">2026</span> OpenServerHelm · Original project code intended for Apache-2.0</div><div>Independent open-source project · Not affiliated with any sci-fi franchise</div></div></footer>
+<script>
+  (() => {
+    const root=document.documentElement;
+    const themeButton=document.getElementById('theme');
+    const themeLabel=document.getElementById('theme-label');
+    const navigation=document.getElementById('navigation');
+    const menu=document.getElementById('menu');
+    const values=['system','light','dark'];
+    let selected='system';
+    try{const v=localStorage.getItem('osh-website-theme');if(values.includes(v))selected=v;}catch(_){}
+    function render(){if(selected==='system')root.removeAttribute('data-theme');else root.setAttribute('data-theme',selected);themeLabel.textContent=selected[0].toUpperCase()+selected.slice(1);themeButton.setAttribute('aria-label','Appearance: '+selected+'. Activate to change');}
+    render();
+    themeButton.addEventListener('click',()=>{selected=values[(values.indexOf(selected)+1)%values.length];try{localStorage.setItem('osh-website-theme',selected);}catch(_){}render();});
+    menu.addEventListener('click',()=>{const open=navigation.dataset.open!=='true';navigation.dataset.open=String(open);menu.setAttribute('aria-expanded',String(open));});
+    navigation.addEventListener('click',e=>{if(e.target.closest('a')){navigation.dataset.open='false';menu.setAttribute('aria-expanded','false');}});
+    document.getElementById('year').textContent=String(new Date().getFullYear());
+  })();
+</script>
+</body>
+</html>
