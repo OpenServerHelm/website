@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="OpenServerHelm — a new open-source infrastructure project taking shape.">
+<meta name="description" content="OpenServerHelm is rethinking self-hosted infrastructure management. A new open-source project is taking shape.">
 <meta name="theme-color" content="#091525">
-<title>OpenServerHelm — Something is taking shape</title>
+<title>OpenServerHelm — A new way to command your infrastructure</title>
 <style>
 :root{color-scheme:dark;--bg:#091525;--fg:#eef6ff;--muted:#b0c3d8;--line:#35516d;--cyan:#85d7f8;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{box-sizing:border-box}
@@ -18,7 +18,7 @@ header{border-bottom:1px solid #ffffff1b}
 .brand{display:flex;align-items:center;gap:.85rem;font-size:1.1rem;font-weight:750;letter-spacing:-.03em;text-decoration:none}
 .mark{width:39px;height:39px;display:grid;place-items:center;background:#163752;border:1px solid #4379a4;border-radius:12px;color:var(--cyan)}
 .header-note{font-size:.8rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
-main{flex:1;display:flex;align-items:center}
+main{flex:1}.hero{min-height:560px}.below{padding:0 0 5.3rem}.eyebrow{color:var(--cyan);font-size:.77rem;letter-spacing:.18em;text-transform:uppercase;font-weight:750}.teaser-title{font-size:clamp(1.55rem,3.1vw,2.2rem);letter-spacing:-.035em;line-height:1.28;max-width:710px;margin:.8rem 0 1.55rem}.panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.panel{padding:1.5rem;border:1px solid #42668577;border-radius:17px;background:linear-gradient(155deg,#163451b8,#0e2238c5);min-height:168px}.panel .index{color:#8bdafb;font-size:.78rem;letter-spacing:.13em}.panel h3{font-size:1.15rem;margin:1.1rem 0 .5rem;letter-spacing:-.02em}.panel p{color:var(--muted);font-size:.94rem;line-height:1.6;margin:0}.closing{display:flex;gap:1rem;justify-content:space-between;align-items:center;margin-top:2.1rem;padding:1.4rem 0;border-top:1px solid #ffffff24;color:var(--muted);font-size:.92rem}.closing strong{color:var(--fg)}
 .hero{position:relative;padding:clamp(4.2rem,11vh,8rem) 0;max-width:790px}
 .kicker{display:inline-flex;gap:.55rem;align-items:center;border:1px solid #407297;padding:.42rem .85rem;border-radius:100px;color:#b0e4fb;font-size:.83rem;letter-spacing:.035em;background:#17405c66}
 .dot{height:7px;width:7px;background:#8bdafb;border-radius:50%}
@@ -31,7 +31,7 @@ h1 span{color:var(--cyan)}
 .glow{position:absolute;pointer-events:none;inset:-3rem -20rem auto auto;width:24rem;height:24rem;border:1px solid #76c8ed27;border-radius:50%;box-shadow:0 0 0 35px #76c8ed08,0 0 0 85px #76c8ed06;z-index:-1}
 footer{border-top:1px solid #ffffff1b}
 .foot{padding:1.6rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.83rem}
-@media(max-width:640px){.shell{width:calc(100% - 2.3rem)}.bar{min-height:72px}.brand{font-size:1rem}.header-note{font-size:.67rem;letter-spacing:.06em}.hero{padding:4.5rem 0}.glow{display:none}.teasers{gap:1rem 1.5rem}.foot{align-items:flex-start;flex-direction:column}}
+@media(max-width:760px){.panels{grid-template-columns:1fr}.panel{min-height:0}.closing{flex-direction:column;align-items:flex-start}.hero{min-height:0}}@media(max-width:640px){.shell{width:calc(100% - 2.3rem)}.bar{min-height:72px}.brand{font-size:1rem}.header-note{font-size:.67rem;letter-spacing:.06em}.hero{padding:4.5rem 0}.glow{display:none}.teasers{gap:1rem 1.5rem}.foot{align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
 </head>
@@ -44,9 +44,20 @@ footer{border-top:1px solid #ffffff1b}
 <div class="glow" aria-hidden="true"></div>
 <span class="kicker"><span class="dot"></span> An open-source project in progress</span>
 <h1>Your infrastructure.<br><span>In focus.</span></h1>
-<p class="lead">Something new is taking shape. OpenServerHelm is an open-source project exploring a simpler, more thoughtful way to manage infrastructure.</p>
-<ul class="teasers" aria-label="Project principles"><li>Self-hosted</li><li>Open source</li><li>Built with control in mind</li></ul>
-</div></div></main>
+<p class="lead">What if managing your servers felt less like juggling tools—and more like being in command? We’re building a self-hosted, open-source approach to infrastructure management, with clarity and control at its core.</p>
+<ul class="teasers" aria-label="Project principles"><li>Your infrastructure</li><li>Your rules</li><li>Open source</li></ul>
+</div></div>
+<section class="below" aria-labelledby="possibilities"><div class="shell">
+<div class="eyebrow">A glimpse of what’s ahead</div>
+<h2 id="possibilities" class="teaser-title">Less complexity. More confidence. A little more room to think bigger.</h2>
+<div class="panels">
+<article class="panel"><span class="index">01 / SEE CLEARLY</span><h3>Make sense of the moving parts.</h3><p>A clearer perspective on the systems you depend on, without the usual maze of tabs.</p></article>
+<article class="panel"><span class="index">02 / WORK SMARTER</span><h3>From questions to understanding.</h3><p>Imagine getting useful context when things need attention—not just another notification.</p></article>
+<article class="panel"><span class="index">03 / STAY IN CHARGE</span><h3>Power without giving up control.</h3><p>Built around the belief that your infrastructure and decisions should remain yours.</p></article>
+</div>
+<div class="closing"><strong>We’re just getting started. Keep an eye on this space.</strong><span>In active development · No public release yet</span></div>
+</div></section>
+</main>
 <footer><div class="shell foot"><span>© <span id="year">2026</span> OpenServerHelm</span><span>More to come. No public release available yet.</span></div></footer>
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
