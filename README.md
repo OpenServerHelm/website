@@ -30,3 +30,4 @@ The launch page describes **planned** product capabilities. It must not advertis
 This site has no backend, forms, identity integration or analytics, and contains no infrastructure endpoints. Do not add privately hosted images, true server addresses, owner identities, tokens or AI development context. No platform login is linked from the public site.
 
 Content and design should remain accessible on desktop/mobile and must not borrow Star Trek licensed artwork or Kubernetes Helm marks.
+
